@@ -1,0 +1,50 @@
+/* ==========================================================================
+   LAYOUT · hoja central, secciones, títulos, separadores y pie
+   ========================================================================== */
+
+/* Hoja con renglones */
+.paper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+  overflow: hidden;
+  background: var(--paper);
+  background-image: repeating-linear-gradient(transparent 0 31px, var(--rule) 31px 32px);
+  box-shadow: 0 8px 28px rgba(71,11,36,.18);
+}
+
+/* Sección con espacio superior (Jugar, Proyectos) */
+.sec { padding-top: 6.5rem; }
+
+/* Encabezado de sección: título + (opcional) filtros */
+.sh {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.sh h2 {
+  margin: 0;
+  font: 700 clamp(2rem, 6vw, 3.2rem)/1 "Pixelify Sans", monospace;
+  text-transform: uppercase;
+}
+
+/* Línea ondulada separadora */
+.wave {
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin: 2rem 0 0;
+}
+.wave--divider { margin-top: 5.5rem; }
+
+/* Pie */
+.foot {
+  padding-top: 1.5rem;
+  text-align: center;
+  color: var(--mute);
+  font-size: .85rem;
+}

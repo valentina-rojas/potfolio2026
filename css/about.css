@@ -1,0 +1,66 @@
+/* ==========================================================================
+   ABOUT · "Sobre mí": polaroid, texto y etiquetas de habilidades
+   ========================================================================== */
+
+.about {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding-bottom: 1.5rem;
+}
+
+.mid { text-align: left; }
+
+.about p {
+  margin: 0;
+  max-width: none;
+  font: inherit;
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  line-height: 1.75;
+}
+
+/* Polaroid */
+.pol {
+  position: relative;
+  padding: .5rem .5rem 1.7rem;
+  background: #fff;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  transform: rotate(-4deg);
+}
+.pol img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+/* Etiquetas */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.1rem;
+  margin: 3.5rem 0 1rem;
+}
+
+.chip {
+  padding: .55rem 1.3rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ink);
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.chip--yellow { background: var(--y); }
+.chip--claret { background: var(--pk); color: #fff; }
+.chip--teal   { background: var(--bl); color: #fff; }
+.chip--copper { background: #a22a0f;   color: #fff; }
+.chip--brown  { background: #5d2806;   color: #fff; }
+
+@media (max-width: 760px) {
+  .about { grid-template-columns: 1fr; }
+  .pol { max-width: 260px; margin: 0 auto; }
+}

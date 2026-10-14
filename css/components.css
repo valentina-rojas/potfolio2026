@@ -1,0 +1,49 @@
+/* ==========================================================================
+   COMPONENTES COMPARTIDOS · cinta adhesiva e imágenes de reemplazo
+   ========================================================================== */
+
+/* Cinta adhesiva (polaroid y fotos de proyectos) */
+.tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  z-index: 2;
+  width: 64px;
+  height: 22px;
+  margin-left: -32px;
+  background: rgba(180,190,230,.75);
+  transform: rotate(-6deg);
+}
+
+/* Imagen de reemplazo (se usa si un proyecto todavía no tiene fotos) */
+.art {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--b);
+}
+.art::before, .art::after { content: ""; position: absolute; }
+
+.a1 { --b: #d98a78; }
+.a1::before { left: 20%; top: 30%; width: 60%; height: 14%; background: #111; }
+.a1::after  { left: 35%; top: 55%; width: 30%; height: 14%; background: var(--y); }
+
+.a2 { --b: #45607a; }
+.a2::before { left: 15%; top: 20%; width: 36%; height: 60%; border-radius: 50%; background: #8fcfc8; }
+.a2::after  { right: 12%; bottom: 15%; width: 30%; height: 30%; background: #e6a0b4; transform: rotate(18deg); }
+
+.a3 { --b: var(--y); }
+.a3::before { left: 18%; top: 18%; width: 64%; height: 64%; border-radius: 50%; border: 12px solid #111; }
+.a3::after  { left: 42%; top: 42%; width: 16%; height: 16%; background: #d98a78; border-radius: 50%; }
+
+.a4 { --b: #d9e8d0; }
+.a4::before { left: 0; right: 0; bottom: 0; height: 35%; background: #5f8f78; }
+.a4::after  { left: 42%; bottom: 35%; width: 16%; height: 34%; background: #111; border-radius: 6px 6px 0 0; }
+
+.a5 { --b: #a79ccf; }
+.a5::before { left: 10%; top: 15%; width: 50%; height: 50%; background: #fff; border-radius: 6px; transform: rotate(-8deg); }
+.a5::after  { right: 10%; bottom: 12%; width: 40%; height: 40%; background: var(--y); border-radius: 50%; }
+
+.a6 { --b: #eecab9; }
+.a6::before { left: 0; top: 40%; width: 100%; height: 20%; background: #111; }
+.a6::after  { left: 30%; top: 20%; width: 14%; height: 60%; background: #d98a78; }

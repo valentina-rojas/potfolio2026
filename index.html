@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Portfolio - Valentina Rojas</title>
+    <meta
+      name="description"
+      content="Portfolio de Valentina Rojas, desarrolladora de videojuegos: Unity, Phaser y desarrollo web."
+    />
+    <meta name="theme-color" content="#ebd08e" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+    <!-- Tipografías (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@500;700&family=Pixelify+Sans:wght@700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Estilos: el orden importa (base → layout → componentes → movimiento) -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/hero.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/game.css" />
+    <link rel="stylesheet" href="css/projects.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/motion.css" />
+
+    <!-- Scripts: el orden importa (datos → módulos → main) -->
+    <script src="js/boot.js"></script>
+    <script src="js/data/projects.js" defer></script>
+    <script src="js/data/translations.js" defer></script>
+    <script src="js/i18n.js" defer></script>
+    <script src="js/projects.js" defer></script>
+    <script src="js/modal.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/effects.js" defer></script>
+    <script src="js/game.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <noscript
+      >Esta página necesita JavaScript para mostrar los proyectos. / This page
+      needs JavaScript to show the projects.</noscript
+    >
+
+    <div class="paper">
+      <!-- ===== Menú ===== -->
+      <nav data-i18n-aria="main" aria-label="Principal">
+        <span class="brand">Valentina</span>
+        <div class="nav-links" id="menu">
+          <a class="on" href="#inicio" data-i18n="n_home">Inicio</a>
+          <a href="#sobre-mi" data-i18n="n_about">Sobre mí</a>
+          <a href="#jugar" data-i18n="n_play">Jugar</a>
+          <a href="#proyectos" data-i18n="n_proj">Proyectos</a>
+          <a href="#contacto" data-i18n="n_contact">Contacto</a>
+        </div>
+        <div class="tools">
+          <button
+            class="lang"
+            id="lang"
+            type="button"
+            aria-label="Switch to English"
+          >
+            EN
+          </button>
+          <button
+            class="burger"
+            id="menu-toggle"
+            type="button"
+            data-i18n-aria="menu"
+            aria-label="Menú"
+            aria-expanded="false"
+            aria-controls="menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- ===== Inicio ===== -->
+      <header class="hero" id="inicio">
+        <small class="hand" data-i18n="myname">mi nombre es</small>
+        <div class="name">
+          Valentina<span class="sticker">Game Developer</span>
+        </div>
+        <div class="status mono">
+          <i></i> <span data-i18n="status">Abierta a nuevos proyectos</span>
+        </div>
+        <svg
+          class="wave"
+          viewBox="0 0 1000 50"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            pathLength="1"
+            d="M0 40 Q500 -10 1000 35"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            opacity=".4"
+          />
+        </svg>
+      </header>
+
+      <!-- ===== Sobre mí ===== -->
+      <section id="sobre-mi">
+        <div class="sh"><h2 data-i18n="aboutlbl">Sobre mí</h2></div>
+        <div class="about">
+          <div class="pol">
+            <i class="tape"></i
+            ><img
+              src="assets/img/about/valentina.jpg"
+              alt="Ilustración de Valentina frente a una computadora"
+            />
+          </div>
+          <div class="mid">
+            <p data-i18n="about">
+              Mi nombre es Valentina Rojas, soy desarrolladora de videojuegos,
+              principalmente enfocada en la programación y el diseño de
+              mecánicas. Actualmente estoy finalizando la Licenciatura en
+              Producción de Videojuegos y Entretenimiento Digital en la
+              Universidad Nacional de Rafaela. Me gusta crear experiencias
+              interactivas, resolver problemas y encontrar formas de llevar las
+              ideas a algo concreto. Busco seguir aprendiendo, sumar experiencia
+              y participar en proyectos que me permitan crecer como
+              desarrolladora.
+            </p>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip chip--yellow">Unity</span>
+          <span class="chip chip--claret" data-i18n="c_design"
+            >Diseño de juegos</span
+          >
+          <span class="chip chip--teal" data-i18n="c_web">Desarrollo web</span>
+          <span class="chip chip--copper">C# · JavaScript</span>
+          <span class="chip chip--brown">Git</span>
+        </div>
+      </section>
+
+      <!-- ===== Minijuego ===== -->
+      <section class="sec" id="jugar">
+        <div class="sh"><h2 data-i18n="h_play">Jugá un rato</h2></div>
+        <div class="screen">
+          <canvas
+            id="game"
+            width="1000"
+            height="200"
+            role="img"
+            data-i18n-aria="canvas"
+            aria-label="Mini juego: pulsa espacio o toca para saltar"
+          ></canvas>
+          <small id="hint" data-i18n="hint"
+            >tocá o apretá espacio para jugar</small
+          >
+        </div>
+      </section>
+
+      <!-- ===== Proyectos (las tarjetas se dibujan desde js/data/projects.js) ===== -->
+      <section class="sec" id="proyectos">
+        <div class="sh">
+          <h2 data-i18n="h_proj">Proyectos</h2>
+          <div
+            class="filters"
+            role="group"
+            data-i18n-aria="filt"
+            aria-label="Filtrar proyectos"
+          >
+            <button aria-pressed="true" data-f="all" data-i18n="all">
+              Todos
+            </button>
+            <button aria-pressed="false" data-f="unity">Unity</button>
+            <button aria-pressed="false" data-f="phaser">Phaser</button>
+            <button aria-pressed="false" data-f="web">Web</button>
+          </div>
+        </div>
+        <div id="list"></div>
+      </section>
+
+      <!-- ===== Contacto ===== -->
+      <svg
+        class="wave wave--divider"
+        viewBox="0 0 1000 50"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          pathLength="1"
+          d="M0 40 Q500 -10 1000 35"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1"
+          opacity=".4"
+        />
+      </svg>
+      <section class="contact" id="contacto">
+        <div class="cl">
+          <h2 data-i18n="h_contact">Hablemos</h2>
+          <p data-i18n="contactp">¡No dudes en contactarme!</p>
+        </div>
+        <ul class="clist">
+          <li>
+            <a href="mailto:valentinarojas618@gmail.com"
+              ><svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" /></svg
+              >valentinarojas618@gmail.com<span aria-hidden="true">↗</span></a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/valentina-rojas-288076321/"
+              target="_blank"
+              rel="noopener"
+              ><svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="currentColor"
+              >
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                /></svg
+              >LinkedIn<span aria-hidden="true">↗</span></a
+            >
+          </li>
+          <li>
+            <a href="https://pawsgames.itch.io/" target="_blank" rel="noopener"
+              ><svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 9L6 4h12l2 5" />
+                <path
+                  d="M4 9a2 2 0 0 0 4 0a2 2 0 0 0 4 0a2 2 0 0 0 4 0a2 2 0 0 0 4 0"
+                />
+                <path d="M5 12v8h14v-8" />
+                <path d="M10 20v-4h4v4" /></svg
+              >itch.io<span aria-hidden="true">↗</span></a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/valentina-rojas"
+              target="_blank"
+              rel="noopener"
+              ><svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                /></svg
+              >GitHub<span aria-hidden="true">↗</span></a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <div class="foot">© 2026 Valentina Rojas</div>
+    </div>
+
+    <!-- Ventana de proyecto (se completa desde js/modal.js) -->
+    <dialog id="modal" aria-labelledby="modal-title">
+      <div class="dh">
+        <div>
+          <h3 id="modal-title"></h3>
+          <span id="modal-meta"></span>
+        </div>
+        <button
+          class="x"
+          id="modal-close"
+          data-i18n-aria="close"
+          aria-label="Cerrar"
+        >
+          ×
+        </button>
+      </div>
+      <div class="db">
+        <div class="gal" id="modal-gallery"></div>
+        <div class="tags" id="modal-tags"></div>
+        <p id="modal-description"></p>
+        <div class="modal-links" id="modal-links"></div>
+      </div>
+    </dialog>
+  </body>
+</html>

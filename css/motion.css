@@ -1,0 +1,72 @@
+/* ==========================================================================
+   MOTION · animaciones, transiciones y efectos de aparición
+   Va al final para poder sobrescribir los estados base de cada componente.
+   ========================================================================== */
+
+@keyframes up    { from { opacity: 0; transform: translateY(18px); } }
+@keyframes drop  { from { opacity: 0; transform: translateY(-24px) scale(.92); } }
+@keyframes pop   { 0% { opacity: 0; transform: scale(.4) rotate(0); }
+                   70% { transform: scale(1.12) rotate(var(--r)); }
+                   100% { opacity: 1; transform: scale(1) rotate(var(--r)); } }
+@keyframes pulse { from { box-shadow: 0 0 0 0 rgba(17,95,120,.55); } to { box-shadow: 0 0 0 10px transparent; } }
+@keyframes draw  { to { stroke-dashoffset: 0; } }
+@keyframes fade  { from { opacity: 0; } }
+@keyframes blink { to { opacity: .3; } }
+@keyframes dlg   { from { opacity: 0; transform: translateY(24px) scale(.97); } }
+@keyframes fpop  { from { opacity: 0; transform: scale(.96); } }
+
+/* Entrada del inicio */
+.hero small { animation: up .6s both; }
+.name       { animation: drop .8s cubic-bezier(.2,.9,.3,1.3) both; }
+.sticker    { animation: pop .6s .85s both; }
+.status     { animation: up .6s .3s both; }
+.status i   { animation: pulse 1.8s infinite; }
+
+/* Línea ondulada que se dibuja */
+.wave path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 1.6s .8s forwards;
+}
+
+/* Cartel del minijuego */
+.screen small { animation: blink 1.4s ease-in-out infinite alternate; }
+
+/* Aparición al hacer scroll (la clase .js la agrega js/boot.js) */
+.js .rv {
+  opacity: 0;
+  translate: 0 26px;
+  transition: opacity .7s cubic-bezier(.2,.8,.2,1) var(--d,0s),
+              translate .7s cubic-bezier(.2,.8,.2,1) var(--d,0s);
+}
+.js .rv.in { opacity: 1; translate: 0 0; }
+.js .chip.rv {
+  transition: opacity .7s var(--d,0s), translate .7s var(--d,0s), transform .2s;
+}
+
+/* Movimientos al pasar el mouse */
+.chip:hover { transform: rotate(-3deg) scale(1.06); }
+
+.pol { transition: transform .3s; }
+.pol:hover { transform: rotate(0) scale(1.05); }
+
+.pb { transition: transform .3s cubic-bezier(.2,.8,.2,1); }
+.pc:hover .pb { transform: translateY(-4px); }
+
+.pimg { transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+.pc:hover .pimg { transform: rotate(0) scale(1.03); }
+
+.pc.pop { animation: fpop .45s both; }
+
+/* Ventana y galería */
+dialog[open]            { animation: dlg .35s cubic-bezier(.2,.8,.2,1); }
+dialog[open]::backdrop  { animation: fade .3s; }
+.gal .main.sw           { animation: fpop .35s; }
+
+/* Accesibilidad: sin movimiento si el sistema lo pide */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .rv { opacity: 1 !important; translate: none !important; }
+  .wave path { stroke-dashoffset: 0; }
+}

@@ -1,0 +1,62 @@
+/* ==========================================================================
+   BASE · variables de diseño, reset y utilidades de tipografía
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Paleta (cambiá los colores acá y se actualiza toda la página) */
+  --desk:  #ebd08e;               /* fondo cuadriculado */
+  --grid:  rgba(255,255,255,.45); /* líneas de la cuadrícula */
+  --paper: #f3eadb;               /* hoja */
+  --rule:  #e4d7c0;               /* renglones de la hoja */
+  --ink:   #470b24;               /* texto principal */
+  --mute:  #6b4a52;               /* texto secundario */
+  --card:  #fbf6ec;               /* fondos claros (menú, pantalla de juego) */
+  --y:     #da9413;               /* mostaza: resaltados */
+  --bl:    #115f78;               /* teal */
+  --pk:    #8e1137;               /* claret */
+  --gr:    #747400;               /* oliva */
+  --rd:    #a22a0f;               /* cobre */
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+  scroll-padding-top: 5rem;
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 1.5rem 1rem;
+  background: var(--desk);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 44px 44px;
+  color: var(--ink);
+  font: 500 1rem/1.5 Inter, system-ui, sans-serif;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--bl);
+  outline-offset: 3px;
+}
+
+/* Utilidades de tipografía */
+.mono {
+  font-family: "Space Mono", monospace;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.hand { font-family: "Patrick Hand", cursive; }

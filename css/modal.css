@@ -1,0 +1,113 @@
+/* ==========================================================================
+   MODAL · ventana de proyecto con galería (imagen grande + miniaturas)
+   ========================================================================== */
+
+dialog {
+  width: min(760px, calc(100% - 1.5rem));
+  max-height: calc(100% - 1.5rem);
+  padding: 0;
+  overflow: auto;
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+dialog::backdrop { background: rgba(0,0,0,.6); }
+
+.dh {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+  padding: 1.5rem 1.5rem 0;
+}
+.dh h3 {
+  margin: 0;
+  font: 700 2rem/1.05 "Pixelify Sans", monospace;
+  text-transform: uppercase;
+}
+.dh span {
+  color: var(--mute);
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.2rem;
+}
+
+/* Botón de cerrar */
+.x {
+  all: unset;
+  cursor: pointer;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: var(--y);
+  color: #111;
+  font: 700 1.3rem Inter, sans-serif;
+}
+.x:focus-visible { outline: 3px solid var(--bl); }
+
+.db { padding: 1rem 1.5rem 1.5rem; }
+.db p { margin: .5rem 0 1rem; max-width: 38rem; }
+
+.tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.tags i {
+  padding: .25rem .6rem;
+  background: var(--y);
+  color: #111;
+  font: 700 .72rem "Space Mono", monospace;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.modal-links a { margin-right: 1rem; font-weight: 700; }
+
+/* Galería: imagen grande a la izquierda, miniaturas con scroll a la derecha */
+.gal {
+  display: grid;
+  grid-template-columns: 1fr 130px;
+  gap: .6rem;
+  align-items: start;
+  margin: 1rem 0;
+}
+.gal.solo { grid-template-columns: 1fr; }
+
+.gal .main, .gal .art {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  background: #eee;
+  border: 2px solid var(--ink);
+}
+
+/* Capturas verticales (prototipos mobile): se muestran enteras */
+.gal.pt .main {
+  aspect-ratio: auto;
+  height: min(62vh, 480px);
+  object-fit: contain;
+  background: var(--card);
+}
+.gal.pt .th button img { aspect-ratio: 3/4; }
+
+.th { display: flex; flex-direction: column; gap: .5rem; padding: 2px; overflow-y: auto; }
+.th button {
+  all: unset;
+  cursor: pointer;
+  flex: none;
+  border: 2px solid transparent;
+  transition: opacity .2s, border-color .2s;
+}
+.th button img { display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+.th button[aria-current="true"]  { border-color: var(--ink); }
+.th button[aria-current="false"] { opacity: .65; }
+.th button:hover { opacity: 1; }
+.th button:focus-visible { outline: 3px solid var(--bl); }
+
+@media (max-width: 640px) {
+  .gal { grid-template-columns: 1fr; }
+  .gal.pt .main { height: 55vh; }
+  .th { flex-direction: row; overflow-x: auto; overflow-y: hidden; }
+  .th button { width: 110px; }
+  .gal.pt .th button { width: 80px; }
+}

@@ -1,0 +1,29 @@
+/* ==========================================================================
+   GAME · pantalla del minijuego
+   ========================================================================== */
+
+.screen {
+  position: relative;
+  background: var(--card);
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.screen canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* Cartel "tocá para jugar" */
+.screen small {
+  position: absolute;
+  top: .5rem;
+  right: .8rem;
+  color: var(--mute);
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.1rem;
+  pointer-events: none;
+}

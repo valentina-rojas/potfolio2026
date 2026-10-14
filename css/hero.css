@@ -1,0 +1,79 @@
+/* ==========================================================================
+   HERO · saludo, nombre sobre tira de papel con cintas, sticker y estado
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  padding: 4rem 0 2rem;
+  text-align: center;
+}
+
+.hero small { display: block; font-size: 1.3rem; }
+
+/* Nombre: tira de papel con dos cintas en esquinas opuestas */
+.name {
+  position: relative;
+  display: inline-block;
+  margin: .9rem 0 2.3rem;
+  padding: .22em .5em;
+  background: var(--card);
+  box-shadow: 2px 4px 0 rgba(71,11,36,.16), 0 8px 16px rgba(71,11,36,.1);
+  font: 700 clamp(1.9rem, 12vw, 7rem)/1.1 "Pixelify Sans", monospace;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  transform: rotate(-1.2deg);
+}
+
+.name::before,
+.name::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 4.2rem;
+  height: 1.5rem;
+  background: rgba(218,148,19,.72);
+  clip-path: polygon(0 0,5% 14%,0 28%,5% 42%,0 56%,5% 70%,0 84%,5% 100%,100% 100%,95% 86%,100% 72%,95% 58%,100% 44%,95% 30%,100% 16%,95% 0);
+  transform: rotate(-34deg);
+}
+.name::before { top: -.55rem;    left: -1.5rem;  transform-origin: left center; }
+.name::after  { bottom: -.55rem; right: -1.5rem; }
+
+/* Sticker "Game Developer" colgando del borde inferior */
+.sticker {
+  position: absolute;
+  left: 1.4rem;
+  bottom: -1.5rem;
+  padding: .15rem .7rem;
+  background: var(--pk);
+  color: #fff;
+  box-shadow: 2px 3px 0 rgba(0,0,0,.18);
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.15rem;
+  font-weight: 400;
+  white-space: nowrap;
+  transform: rotate(-3deg);
+  --r: -3deg; /* usada por la animación "pop" */
+}
+
+/* Estado de disponibilidad */
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  color: var(--mute);
+}
+.status i {
+  width: .6rem;
+  height: .6rem;
+  border-radius: 50%;
+  background: var(--bl);
+}
+
+@media (max-width: 760px) {
+  .name { padding: .2em .4em; }
+  .name::before, .name::after { width: 3rem; height: 1.2rem; }
+  .name::before { top: -.45rem;    left: -1rem; }
+  .name::after  { bottom: -.45rem; right: -1rem; }
+  .sticker { left: .8rem; font-size: 1rem; }
+}

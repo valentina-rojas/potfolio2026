@@ -1,0 +1,96 @@
+/* ==========================================================================
+   PROJECTS · filtros y tarjetas de proyectos
+   ========================================================================== */
+
+/* Filtros */
+.filters { display: flex; gap: .4rem; flex-wrap: wrap; }
+
+.filters button {
+  all: unset;
+  cursor: pointer;
+  padding: .4rem .8rem;
+  background: var(--card);
+  border: 1px solid var(--ink);
+  font: 700 .72rem "Space Mono", monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.filters button[aria-pressed="true"],
+.filters button:hover { background: var(--y); color: #111; }
+.filters button:focus-visible { outline: 3px solid var(--bl); }
+
+/* Tarjeta: el color sale de las clases .k1 … .k6 (variables --bg y --tx) */
+.pc {
+  position: relative;
+  margin: 2.6rem 0 0;
+  color: var(--tx);
+}
+.pc[hidden] { display: none; }
+
+.pc .tab {
+  position: absolute;
+  top: -2.2rem;
+  left: 0;
+  padding: .6rem 3rem .5rem 1.4rem;
+  background: var(--bg);
+  color: var(--tx);
+  clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
+}
+
+.pb {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem;
+  background: var(--bg);
+}
+.pb h3 {
+  margin: .7rem 0;
+  font: 700 clamp(2rem, 6vw, 3.2rem)/1 Inter, sans-serif;
+  letter-spacing: -.03em;
+}
+.pb p { margin: 0 0 1.2rem; max-width: 26rem; opacity: .9; }
+
+.pb button {
+  all: unset;
+  cursor: pointer;
+  padding-bottom: 2px;
+  border-bottom: 2px solid currentColor;
+  font: 700 .72rem "Space Mono", monospace;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.pb button:focus-visible { outline: 3px solid var(--tx); outline-offset: 4px; }
+
+/* Foto de la tarjeta (con cintas) */
+.pimg {
+  position: relative;
+  padding: .5rem;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+  cursor: pointer;
+  transform: rotate(-1deg);
+}
+.pc:nth-child(even) .pimg { transform: rotate(1deg); }
+
+.pimg img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+}
+.pimg .tape--left  { left: 12%; }
+.pimg .tape--right { left: auto; right: 10%; margin: 0; transform: rotate(7deg); }
+
+/* Colores de las tarjetas */
+.k1 { --bg: var(--bl); --tx: #fff; }
+.k2 { --bg: #750a0a;   --tx: #fff; }
+.k3 { --bg: var(--y);  --tx: #470b24; }
+.k4 { --bg: var(--gr); --tx: #fff; }
+.k5 { --bg: #a22a0f;   --tx: #fff; }
+.k6 { --bg: var(--pk); --tx: #fff; }
+
+@media (max-width: 760px) {
+  .pb { grid-template-columns: 1fr; padding: 1.5rem; }
+}
